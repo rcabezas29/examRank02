@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 10:37:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/07/02 10:51:41 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/07/06 13:04:19 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 size_t  ft_strlen(const char *s)
 {
-    size_t i = 0;
+    size_t i;
     
+    i = 0;
     while (s[i] != '\0')
         i++;
     return (i);
