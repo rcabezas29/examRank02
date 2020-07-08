@@ -5,39 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 10:52:26 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/07/02 10:58:57 by rcabezas         ###   ########.fr       */
+/*   Created: 2020/07/07 08:43:07 by rcabezas          #+#    #+#             */
+/*   Updated: 2020/07/07 08:53:14 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int     main(int argc, char **argv)
 {
     int used[255];
-    int x;
-    int y;
+    int i;
+    int j;
 
     if (argc == 3)
     {
-        x = 0;
-        while (x++ < 255)
-            used[x] = 0;
-        x = 1;
-        while (x < 3)
+        i = 0;
+        while (i++ < 255)
+            used[i] = 0;
+        i = 1;
+        while (i < 3)
         {
-            y = 0;
-            while (argv[x][y])
+            j  = 0;
+            while(argv[i][j])
             {
-                if (!used[((unsigned char)argv[x][y])])
+                if (!used[(unsigned char)argv[i][j]])
                 {
-                    used[((unsigned char)argv[x][y])] = 1;
-                    write(1, &argv[x][y], 1);
+                    used[((unsigned char)argv[i][j])] = 1;
+                    write(1, &argv[i][j], 1);
                 }
-                y++;
+                j++;
             }
-            x++;
+            i++;
         }
         write(1, "\n", 1);
     }
+    return (0);
 }

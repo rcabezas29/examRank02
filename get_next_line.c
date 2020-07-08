@@ -5,47 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 12:35:40 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/07/02 13:13:01 by rcabezas         ###   ########.fr       */
+/*   Created: 2020/07/07 11:49:07 by rcabezas          #+#    #+#             */
+/*   Updated: 2020/07/08 11:25:38 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t  ft_strlen(char *s)
+size_t      ft_strlen(char *s)
 {
     size_t  i;
-    i = 0;
-    while (s[i] != '\0')
-        i++;
-    return (i);
-}
-
-char    *ft_strchr(char *str, int c)
-{
-    unsigned int    i;
-    unsigned int    length;
     
     i = 0;
-    if (!str)
-        return (NULL);
-    length = ft_strlen(str);
-    while (*str != '\0' && *str != c)
-    {
-        str++;
+    while (s[i] !=  '\0')
         i++;
-    }
-    if (*str != c && i == length)
-        return (NULL);
-    return (str);
+    return(i);
 }
 
-char    *ft_strjoin(char *s1, char *s2)
+char        *ft_strchr(char *s, int c)
+{
+    if (!s)
+        return (0);
+    while (*s != c)
+    {
+        if (*s == '\0')
+            return (0);
+        s++;
+    }
+    return (s);
+}
+
+char        *ft_strjoin(char *s1, char *s2)
 {
     char    *dest;
-    int     i;
-    
+    size_t  i;
+
     i = 0;
     if (!(dest = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
         return (NULL);
@@ -57,23 +53,24 @@ char    *ft_strjoin(char *s1, char *s2)
     return (dest);
 }
 
-char    *ft_strdup(char *str)
+char        *ft_strdup(char *src)
 {
-    int i;
-    char *dest;
+    int     i;
+    char    *dest;
+
     i = 0;
-    if (!(dest = malloc(ft_strlen(str) + 1)))
+    if (!(dest = malloc(ft_strlen(src) + 1)))
         return (NULL);
-    while (str[i] != '\0')
+    while (src[i] != '\0')
     {
-        dest[i] = str[i];
+        dest[i] = src[i];
         i++;
     }
     dest[i] = '\0';
     return (dest);
 }
 
-int     getcharpls(char **line, char **aux, int n)
+static int  getcharpls(char **line, char **aux, int n)
 {
     char *temp1;
     char *temp2;
@@ -92,7 +89,7 @@ int     getcharpls(char **line, char **aux, int n)
         *line = ft_strdup("");
         return (0);
     }
-    if ((temp1 = ft_strchr(*aux, '\n')))
+    if ((temp1  = ft_strchr(*aux, '\n')))
     {
         *temp1 = 0;
         *line = ft_strdup(*aux);
@@ -107,16 +104,17 @@ int     getcharpls(char **line, char **aux, int n)
         *aux = NULL;
         return (0);
     }
+    
     return (1);
 }
 
-int     get_next_line(char **line)
+int         get_next_line(char **line)
 {
-    static char     *aux;
-    char            buffer[65];
-    char            *temp;
-    int             n;
-    if (!line)
+    static char *aux;
+    char buffer[65];
+    char *temp;
+    int n;
+    if(!line)
         return (-1);
     while (ft_strchr(aux, '\n') == NULL)
     {
@@ -137,3 +135,21 @@ int     get_next_line(char **line)
     }
     return (getcharpls(line, &aux, n));
 }
+/*
+int   main(void)
+{
+  int    r;
+  char  *line;
+  line = NULL;
+  while ((r = get_next_line(&line)) > 0)
+  {
+    printf("%s\n", line);
+    free(line);
+    line = NULL;
+  }
+  printf("%s", line);
+  free(line);
+  line = NULL;
+  system ("leaks a.out");
+}
+*/
