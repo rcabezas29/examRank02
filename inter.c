@@ -12,31 +12,14 @@
 
 #include <unistd.h>
 
-size_t     ft_strlen(const char *s)
+char    *ft_strchr(char *s, int c)
 {
-    size_t  i;
-
-    i = 0;
-    while (s[i] != '\0')
-        i++;
-    return (i);
-}
-
-char    *ft_strchr(const char *s, int c)
-{
-    unsigned int len;
-    unsigned int i;
-
-    i = 0;
-    len = ft_strlen(s);
-    while (*s != c && *s)
+    while (*s++ != c)
     {
-        s++;
-        i++;
+        if (*s == '\n')
+            retur(NULL);
     }
-    if (len == i && *s != c)
-        return (NULL);
-    return ((char *)s);
+    return (s);
 }
 
 int     main(int argc, char **argv)
