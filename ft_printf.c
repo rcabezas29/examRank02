@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 08:55:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/07/08 08:24:55 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/07/13 10:51:49 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-size_t      ft_strlen(char *s)
+int      ft_strlen(char *s)
 {
-    size_t i;
+    int i;
 
     i = 0;
     while (s[i] != '\0')
@@ -122,7 +122,7 @@ int         ft_printf(char *format, ...)
                     num = -num;
                     neg = 1;
                 }
-                n = ft_numlen(num, base_len);
+                n = ft_numlen(num, base_len) + neg;
             }
             if (bolprec == 1 && prec > n && *str != 's')
                 zeros = prec - n + neg;
@@ -158,10 +158,4 @@ int         ft_printf(char *format, ...)
         }
     }
     return (length);
-}
-
-int main()
-{
-    char *s = "Hola";
-    ft_printf("%s que tal", s);
 }

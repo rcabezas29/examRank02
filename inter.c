@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:18:31 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/07/07 08:46:05 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/07/13 10:38:27 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char    *ft_strchr(char *s, int c)
     while (*s++ != c)
     {
         if (*s == '\n')
-            retur(NULL);
+            return (0);
     }
     return (s);
 }
