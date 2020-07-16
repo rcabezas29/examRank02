@@ -16,7 +16,7 @@ char    *ft_strchr(char *s, int c)
 {
     while (*s++ != c)
     {
-        if (*s == '\n')
+        if (*s == '\0')
             return (0);
     }
     return (s);
