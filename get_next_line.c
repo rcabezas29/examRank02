@@ -71,7 +71,7 @@ int get_next_line(char **line)
         return (-1);
     while ((ret = read(0, buf, 1)) > 0)
     {
-        if (buf[0] == '\n' || buf[0] == '\0')
+        if (buf[0] == '\n')
         {
             buf[0] = '\0';
             break ;
