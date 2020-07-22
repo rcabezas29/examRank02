@@ -53,13 +53,10 @@ int get_next_line(char **line)
     buf = malloc(2);
     if (line == '\0' || !(*line = ft_strdup("")))
         return (-1);
-    while (read(0, buf, 1))
+    while ((ret = read(0, buf, 1)) > 0)
     {
         if (buf[0] == '\n')
-        {
-            ret = 1;
             break ;
-        }
         *line = ft_strjoin(*line, buf[0]);
     }
     free(buf);
