@@ -83,7 +83,7 @@ int         ft_printf(char *format, ...)
             zeros = 0;
             bolprec = 0;
             neg = 0;
-            while (*str >= '0' && *str < '9')
+            while (*str >= '0' && *str <= '9')
             {
                 width = width * 10 + (*str - 48);
                 str++;
